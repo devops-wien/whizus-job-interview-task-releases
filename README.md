@@ -14,7 +14,8 @@ In this task we will look how we can handle releases and their promotion when us
 
 ## Additional task
 
-* If curious try out their idea and think about what Tom may suggest when the guys go to the meetup :)
+* Alice and Bob have already been busy and have implemented and documented their first draft for the new workflow. You can find their work in [arch](arch), [argocd](argocd) and [.github](.github). As a first step, it can be helpful to look at these files, get them working and then build on them
+* Think about what Tom may suggest when the guys go to the meetup :)
 
 ## Notes
 
