@@ -1,0 +1,37 @@
+name: Manifests Pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to use, defaults to latest if not set'
+        required: true
+        default: 'latest'
+
+jobs:
+  release_dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release dev
+        run: |
+          echo "Will write ${{ github.event.inputs.version }} to the config folder"
+          echo "Tag config repo with new version"
+          echo "Update gitops operator CR to new version"
+
+  release_stage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release stage
+        run: |
+          echo "Will write ${{ github.event.inputs.version }} to the config folder"
+          echo "Tag config repo with new version"
+          echo "Update gitops operator CR to new version"
+
+  release_prod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release prod
+        run: |
+          echo "Will write ${{ github.event.inputs.version }} to the config folder"
+          echo "Tag config repo with new version"
+          echo "Update gitops operator CR to new version"

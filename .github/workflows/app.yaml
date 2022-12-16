@@ -1,0 +1,78 @@
+name: App Pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to use, defaults to latest if not set'
+        required: true
+        default: 'latest'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release dev
+        run: |
+          echo "Building version ${{ github.event.inputs.version }}"
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release dev
+        run: |
+          echo "Testing version ${{ github.event.inputs.version }}"
+
+  push_image:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release dev
+        run: |
+          echo "Pushed image version ${{ github.event.inputs.version }}"
+
+  release_dev:
+    needs: push_image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release dev
+        run: |
+          echo "Will write ${{ github.event.inputs.version }} to the config folder"
+          echo "Tag config repo with new version"
+          echo "Update gitops operator CR to new version"
+
+  pre_stage_quality_gate:
+    needs: release_dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run some quality gate after dev deployment
+        run: echo "Quality gate passed"
+          
+
+  release_stage:
+    needs: pre_stage_quality_gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release stage
+        run: |
+          echo "Will write ${{ github.event.inputs.version }} to the config folder"
+          echo "Tag config repo with new version"
+          echo "Update gitops operator CR to new version"
+
+  pre_prod_quality_gate:
+    needs: release_stage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run some quality gate after stage deployment
+        run: echo "Quality gate passed"
+
+  release_prod:
+    needs: pre_prod_quality_gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release prod
+        run: |
+          echo "Will write ${{ github.event.inputs.version }} to the config folder"
+          echo "Tag config repo with new version"
+          echo "Update gitops operator CR to new version"
