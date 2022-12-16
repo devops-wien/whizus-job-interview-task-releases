@@ -2,7 +2,7 @@
 
 ## WhizWare Corp
 
-Alice has been working for many years at WhizWare and remembers these days of mainframes and then the transition to the more modern stack. After the usuall monolithic design, somewhen, microservices became the new now. As the management require to catch up with the modern trends, she has been asked to move current monoliths to Kubernetes. Some of them are still monolithic and are deployed in a **multi-instance[^1] way**. Some teams are already ahead and splitted their monoliths into several microservices which could be already deployed. 
+Alice has been working for many years at WhizWare and remembers these days of mainframes and then the transition to the more modern stack. After the usual monolithic design, somewhen, microservices became the new now. As the management require to catch up with the modern trends, she has been asked to move current monoliths to Kubernetes. Some of them are still monolithic and are deployed in a **multi-instance[^1] way**. Some teams are already ahead and splitted their monoliths into several microservices which could be already deployed. 
 
 > *One of the most important topics where noone has any clue yet is how to do the promotion of different versions then[^2]? Usually the servers were just there and deploying a new version of the app was quite simple by just clicking the right button in the pipeline. Ops guys managed the servers including the other infrastructure, now there is this additional YAML-engineering stuff one need to care about.* - Alice thought.
 
