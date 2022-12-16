@@ -11,8 +11,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: dev
     steps:
-      - name: Release dev
+      - name: Build
         run: |
           echo "Building version ${{ github.event.inputs.version }}"
 
@@ -20,7 +21,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Release dev
+      - name: Test
         run: |
           echo "Testing version ${{ github.event.inputs.version }}"
 
@@ -28,13 +29,14 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - name: Release dev
+      - name: Push Image
         run: |
           echo "Pushed image version ${{ github.event.inputs.version }}"
 
   release_dev:
     needs: push_image
     runs-on: ubuntu-latest
+    environment: dev
     steps:
       - name: Release dev
         run: |
@@ -53,6 +55,7 @@ jobs:
   release_stage:
     needs: pre_stage_quality_gate
     runs-on: ubuntu-latest
+    environment: staging
     steps:
       - name: Release stage
         run: |
@@ -70,6 +73,7 @@ jobs:
   release_prod:
     needs: pre_prod_quality_gate
     runs-on: ubuntu-latest
+    environment: prod
     steps:
       - name: Release prod
         run: |
