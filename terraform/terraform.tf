@@ -9,7 +9,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket    = "devops-job-interviews"
+    bucket    = "devops-at-vie-1-job-interviews"
     key       = "terraform.tfstate"
     region    = "at-vie-1"
     endpoint  = "https://sos-at-vie-1.exo.io"
