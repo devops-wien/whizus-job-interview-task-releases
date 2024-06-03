@@ -11,8 +11,8 @@ terraform {
   backend "s3" {
     bucket    = "devops-job-interviews"
     key       = "terraform.tfstate"
-    region    = var.zone
-    endpoint  = "https://sos-${var.zone}.exo.io"
+    region    = "at-vie-1"
+    endpoint  = "https://sos-at-vie-1.exo.io"
 
     # access_key = var.s3_access_key
     # secret_key = var.s3_secret_key
